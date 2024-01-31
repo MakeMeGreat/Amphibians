@@ -3,8 +3,10 @@ package com.mis.example.amphibians
 
 import android.view.View
 import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.mis.example.amphibians.network.Amphibian
 import com.mis.example.amphibians.ui.AmphibianApiStatus
 import com.mis.example.amphibians.ui.AmphibianListAdapter
@@ -40,5 +42,16 @@ fun bindStatus(statusImageView: ImageView, status: AmphibianApiStatus?) {
         }
 
         else -> {}
+    }
+}
+
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        imgView.load(imgUri) {
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_connection_error)
+        }
     }
 }
