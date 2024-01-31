@@ -28,14 +28,16 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Amphibian>?) {
  */
 @BindingAdapter("apiStatus")
 fun bindStatus(statusImageView: ImageView, status: AmphibianApiStatus?) {
-    when(status) {
+    when (status) {
         AmphibianApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
+
         AmphibianApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+
         AmphibianApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)

@@ -55,9 +55,10 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:padding="8dp"
+            android:padding="0dp"
+            android:layout_margin="16dp"
             android:scaleType="centerCrop"
             app:imageUrl="@{viewModel.amphibian.imgSrcUrl}"
             app:layout_constraintEnd_toEndOf="parent"
